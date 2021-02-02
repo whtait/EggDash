@@ -8,7 +8,10 @@ import SignUp from "./SignUp";
 import Login from "./Login";
 import Markets from "./Markets";
 
+export const GlobalStateContext = React.createContext();
+
 function App() {
+
   const defaultState = {
     verified: false,
     cart: [],
@@ -21,7 +24,6 @@ function App() {
   };
 
   const [state, setState] = useState(defaultState);
-
   const [map, setMap] = useState({
     toggled: false,
   });
@@ -47,12 +49,6 @@ function App() {
   function removeCartItem(productName) {
     let newTotal = state.total;
     let newCart = [];
-    //loop through all items in array
-    //if its not the product, we push into our new array
-    //else
-      //if the amount is 0, we simply don't add it to the new array
-      //if its not 0 then we decrement the amount and then add it
-      console.log('removeCartItem invoked')
     let removedOne = false;
     for (let i = 0; i < state.cart.length; i++) {
       if (state.cart[i][1] !== productName) {
@@ -76,8 +72,6 @@ function App() {
         }
       }
     }
-    console.log(JSON.stringify(newCart));
-    console.log(state.total);
     setState({
       ...state,
       cart: newCart,
@@ -91,13 +85,6 @@ function App() {
       cart: [],
       total: 0
     })
-    // const request = {
-    //   method: "DELETE",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ email: username, password: password }),
-    // };
-    // const response = await fetch("/cust/login", request);
-    // const data = await response.json();
   }
 
   async function logOut() {
@@ -205,8 +192,25 @@ function App() {
     });
   }
 
+  const GlobalStateValue = {
+    defaultState,
+    state,
+    setState,
+    map,
+    setMap,
+    instantiateCart,
+    unAuth,
+    removeCartItem,
+    emptyCart,
+    logOut,
+    toggled,
+    addToCart,
+    loggedIn,
+    signedUp
+  }
+
   return (
-    <div>
+    <GlobalStateContext.Provider value={GlobalStateValue}>
       {state.verified ? (
         <Switch>
           <Route
@@ -300,14 +304,8 @@ function App() {
           />
         </Switch>
       )}
-    </div>
+    </GlobalStateContext.Provider>
   );
 }
 
 export default App;
-
-//logged out function invoked {
-//   loop through our cart
-//   for every item in our cart it will make a request to the server with the cart item in the body
-// }
-// req.body
