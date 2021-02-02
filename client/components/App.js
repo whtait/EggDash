@@ -206,7 +206,11 @@ function App() {
     toggled,
     addToCart,
     loggedIn,
-    signedUp
+    signedUp,
+    cart: state.cart,
+    total: state.total,
+    email: state.email,
+    version: false,
   }
 
   return (

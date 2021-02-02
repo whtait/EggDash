@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { GlobalStateContext } from './App';
 import {
   Menu,
   MenuButton,
@@ -37,10 +38,9 @@ export default function NavbarL(props) {
   const toast = useToast();
 
 
+  const { toggled, cart, removeCartItem, unAuth} = useContext(GlobalStateContext);
 
 
-  // const [subtotal, changeSubtotal] = useState('0.00');
-  const { toggled, cart, removeCartItem, unAuth} = props;
   const cartArray = [];
 
   for (let i = 0; i < cart.length; i++) {
