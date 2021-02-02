@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { GlobalStateContext } from './App';
 import {
   Box,
   Badge,
@@ -24,7 +25,8 @@ import {
 } from "@chakra-ui/react";
 import Item from "./Item";
 export default function Markets(props) {
-  const { version, addToCart, instantiateCart, email } = props;
+  const { addToCart, instantiateCart, email } = useContext(GlobalStateContext);
+  const { version } = props;
 
   const defaultState = {
     products: []

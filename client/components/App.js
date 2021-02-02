@@ -226,7 +226,7 @@ function App() {
                   {map.toggled ? (
                     <div>
                       <NavbarL />
-                      <Markets version={true} addToCart={addToCart} email={state.email} instantiateCart={instantiateCart}/>
+                      <Markets />
                     </div>
                   ) : (
                     <div>
