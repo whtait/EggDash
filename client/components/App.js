@@ -225,7 +225,7 @@ function App() {
                 <div>
                   {map.toggled ? (
                     <div>
-                      <NavbarL toggled={toggled} cart={state.cart} total={state.total} emptyCart={emptyCart} removeCartItem={removeCartItem} unAuth={unAuth}/>
+                      <NavbarL />
                       <Markets version={true} addToCart={addToCart} email={state.email} instantiateCart={instantiateCart}/>
                     </div>
                   ) : (
