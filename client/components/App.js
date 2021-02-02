@@ -226,12 +226,12 @@ function App() {
                   {map.toggled ? (
                     <div>
                       <NavbarL />
-                      <Markets />
+                      <Markets version={true} />
                     </div>
                   ) : (
                     <div>
-                      <NavbarL toggled={toggled} cart={state.cart} total={state.total} emptyCart={emptyCart} removeCartItem={removeCartItem} unAuth={unAuth}/>
-                      <Markets version={false} addToCart={addToCart} email={state.email} instantiateCart={instantiateCart}/>
+                      <NavbarL />
+                      <Markets version={false} />
                     </div>
                   )}
                 </div>
